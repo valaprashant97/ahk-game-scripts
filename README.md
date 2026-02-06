@@ -43,8 +43,8 @@ File:`capslock-to-shift-hold.ahk`
 
 2️⃣ Clone This Repository
 Open Command Prompt or Git Bash, then run:
-```bash
-git clone https://github.com/your-username/ahk-game-scripts.git
+
+'git clone https://github.com/your-username/ahk-game-scripts.git'
 
 ▶️ How to Run an AutoHotkey Script
 
