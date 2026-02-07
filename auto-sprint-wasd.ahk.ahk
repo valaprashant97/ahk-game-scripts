@@ -6,80 +6,29 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 SendMode Input
 SetKeyDelay, -1, -1
 
-autoSprint := true  ; default ON
+movementKeys := ["w","a","s","d"]
 
-F8::
-autoSprint := !autoSprint
-if (!autoSprint)
-{
-    Send {Shift up}
-    ToolTip Auto Sprint: OFF
-}
-else
-{
-    ToolTip Auto Sprint: ON
-}
-SetTimer, RemoveToolTip, -1000
-return
-
-RemoveToolTip:
-ToolTip
-return
-
-CheckShiftRelease() {
-    global autoSprint
-    if (!autoSprint)
-        return
-
-    if !GetKeyState("w","P")
-    && !GetKeyState("a","P")
-    && !GetKeyState("s","P")
-    && !GetKeyState("d","P")
-    {
-        Send {Shift up}
+AnyKeyDown() {
+    global movementKeys
+    for k in movementKeys {
+        if GetKeyState(movementKeys[k], "P")
+            return true
     }
+    return false
 }
 
-*w::
-if (autoSprint)
-    Send {Shift down}
-Send {w down}
+~*w::
+~*a::
+~*s::
+~*d::
+    if !GetKeyState("Shift","P")
+        Send {Shift down}
 return
 
-*w up::
-Send {w up}
-CheckShiftRelease()
-return
-
-*a::
-if (autoSprint)
-    Send {Shift down}
-Send {a down}
-return
-
-*a up::
-Send {a up}
-CheckShiftRelease()
-return
-
-*s::
-if (autoSprint)
-    Send {Shift down}
-Send {s down}
-return
-
-*s up::
-Send {s up}
-CheckShiftRelease()
-return
-
-*d::
-if (autoSprint)
-    Send {Shift down}
-Send {d down}
-return
-
-*d up::
-Send {d up}
-CheckShiftRelease()
+~*w up::
+~*a up::
+~*s up::
+~*d up::
+    if !AnyKeyDown()
+        Send {Shift up}
 return
