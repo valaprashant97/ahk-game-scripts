@@ -27,6 +27,13 @@ File:`wasd-auto-sprint-toggle.ahk`
 - Useful for sprinting or holding actions in games
 File:`capslock-to-shift-hold.ahk`
 
+⌨️ AHK Shift Movement Cycle Script
+While holding **E**:
+- Shift stays pressed
+- W → D → S → A movement cycle runs repeatedly
+- Stops instantly when E is released
+File:`shift-wasd-cycle.ahk`
+
 🛠 Requirements
 
 - Windows OS
